@@ -1,0 +1,51 @@
+#In this activity, we used sudo since we are not root
+
+#Add Users
+
+sudo useradd -c "Sales Representative" -e 2024-04-06 -p P@ssword1234! ahitt
+sudo useradd -c "HR Manager" -p P@ssword1234! ctee 
+sudo useradd -c "HR Specialist" -e 2024-04-06 -p P@ssword1234! crunion
+sudo useradd -c "Finance Manager" -p P@ssword1234! dolberdi           
+sudo useradd -c "Personnel Manager" -p P@ssword1234! edilling           
+sudo useradd -c "CEO" -p P@ssword1234! emcbath             
+sudo useradd -c "Shipping Manager" -p P@ssword1234! eleonard           
+sudo useradd -c "Shipping" -e 2024-04-06 -p P@ssword1234! fstaffor
+sudo useradd -c "Shipping" -e 2024-04-06 -p P@ssword1234! garringt
+sudo useradd -c "Shipping" -e 2024-04-06 -p P@ssword1234! hmcculla
+sudo useradd -c "Sales Manager" -p P@ssword1234! isteinke              
+sudo useradd -c "Shipping" -e 2024-04-06 -p P@ssword1234! kkawczy 
+sudo useradd -c "Shipping" -e 2024-04-06 -p P@ssword1234! lchaloux
+sudo useradd -c "Shipping" -e 2024-04-06 -p P@ssword1234! mmolinar
+sudo useradd -c "Sales Representative" -e 2024-04-06 -p P@ssword1234! sblunt  
+sudo useradd -c "Sales Representative" -e 2024-04-06 -p P@ssword1234! szane   
+sudo useradd -c "Shipping" -e 2024-04-06 -p P@ssword1234! tmickley
+sudo useradd -c "Finance Specialist" -e 2024-04-06 -p P@ssword1234! wleist  
+sudo useradd -c "HR Specialist" -e 2024-04-06 -p P@ssword1234! wbrumbau
+sudo useradd -c "Sales Representative" -e 2024-04-06 -p P@ssword1234! yhallida
+
+
+#Validate users have been created
+sudo getent passwd | cut -d: -f1
+
+#Create Groups
+sudo groupadd Sales
+sudo groupadd HR
+sudo groupadd Finance
+sudo groupadd Personnel
+sudo groupadd CEO
+sudo groupadd Shipping
+sudo groupadd Managers
+
+
+#Add appropriate users to the groups
+sudo gpasswd -M sblunt,szane,yhallida Sales
+sudo gpasswd -M ctee,crunion,wbrumbau HR
+sudo gpasswd -M dolberdi,wleist Finance
+sudo gpasswd -M ahitt,ctee,crunion,dolberdi,edilling,emcbath,eleonard,fstaffor,garringt,hmcculla,isteinke,kkawczy,lchaloux,mmolinar,sblunt,szane,tmickley,wleist,wbrumbau,yhallida Personnel
+sudo gpasswd -M emcbath CEO
+sudo gpasswd -M eleonard,fstaffor,garringt,hmcculla,kkawczy,lchaloux,mmolinar,tmickley Shipping
+sudo gpasswd -M ctee,dolberdi,edilling,eleonard,isteinke Managers
+
+
+#Check the group memberships
+sudo getent group
